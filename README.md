@@ -4,11 +4,11 @@
 - Node.js 18.x
 #### Installation
 ```
-Run `npm install` at project root
+npm install
 ```
 #### Run
 ```
-Run npm install or npm run dev
+npm install or npm run dev
 ```
 #### Build
 ```
