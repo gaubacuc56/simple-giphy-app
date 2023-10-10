@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useMemo } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { CircularProgress } from "@chakra-ui/react";
 import TextInput from "src/components/Input";
 import { useDebounce } from "src/utils/use-debounce";
@@ -9,11 +9,9 @@ const delay = 500;
 
 export default function Home() {
   const [input, setInput] = useState("all");
-  const debounceInput = useDebounce(input, delay);
+  const debounceInput = useDebounce(input.length === 0 ? "all" : input, delay);
   const {
     data: gifs,
-    isFetching,
-    isLoading,
     refetch: getGifs,
   } = useSearchAllGifQuery(debounceInput);
 
@@ -23,18 +21,18 @@ export default function Home() {
 
   useEffect(() => {
     getGifs();
-  }, [debounceInput]);
+  }, [getGifs]);
 
   return (
-    <div className="w-full h-[100vh] flex justify-center">
+    <div className="w-full flex justify-center bg-slate-950">
       <div className="w-[80%] my-5">
         <TextInput onChange={handleInputChange} />
-        {(isFetching ?? isLoading) && gifs === undefined ? (
+        {gifs !== undefined ? (
+          <GifGrid data={gifs.data as GifModel[]} />
+        ) : (
           <div className="mt-10 w-full h-[3rem] flex justify-center">
             <CircularProgress isIndeterminate color="green.300" />
           </div>
-        ) : (
-          <GifGrid data={gifs.data as GifModel[]} />
         )}
       </div>
     </div>

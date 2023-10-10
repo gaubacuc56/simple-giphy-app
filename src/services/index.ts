@@ -1,4 +1,8 @@
 import { giphyService } from "./giphy";
-export const fetchCollection = [
+
+export const fetchReducer = {
+    [giphyService.reducerPath]: giphyService.reducer
+}
+export const fetchMiddleware = [
     giphyService
 ]

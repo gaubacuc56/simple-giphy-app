@@ -15,15 +15,15 @@ export default function TextInput(props: ITextInputProps) {
     },
     [onChange]
   );
-  
+
   return (
     <InputGroup>
       <InputLeftElement pointerEvents="none">
-        <SearchIcon fontSize="20px" marginTop={2} />
+        <SearchIcon fontSize="20px" marginTop={2} color='white' />
       </InputLeftElement>
       <Input
         onChange={onInputChange}
-        className="w-full"
+        className="w-full text-white"
         placeholder="Search Gif name"
         size="lg"
       />
