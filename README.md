@@ -1,5 +1,5 @@
 # Simple Giphy App
-
+- React + TypeScript + Redux Toolkit
 #### Prerequisites
 - Node.js 18.x
 #### Installation
